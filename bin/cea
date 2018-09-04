@@ -1,0 +1,13 @@
+#! /bin/sh
+if [ "$1" = "-h" ]; then
+    echo "usage: $0 [...]"
+    echo "executes a command on every core node"
+fi
+
+for f in `find /tmp/pycore.*/ -type s -mindepth 1 -maxdepth 1  2>/dev/null`
+do
+        echo '# HOST:' ${f##*/}
+        vcmd -c $f -- bash -ci "$(echo $@)" 2>/dev/null
+    echo
+done
+
