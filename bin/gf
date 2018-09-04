@@ -1,0 +1,10 @@
+#! /bin/sh
+if [ "$1" = "-h" ]; then
+    echo "usage: $0 <filesize> <outname>"
+    echo "generate file from urandom"
+    echo " example: $0 10M tenmegabyte.file"
+    exit    
+fi
+
+dd if=/dev/urandom of=$2 bs=$1 count=1
+
