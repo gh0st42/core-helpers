@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" = "-h" ]; then
+    echo "usage: $0 <node_name>"
+    echo "open bash on core node. Lucky session guess (/tmp/pycore.*/) .."
+    exit
+fi
+
+vcmd -c /tmp/pycore.*/$1 -i bash
