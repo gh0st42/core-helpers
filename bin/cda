@@ -8,6 +8,7 @@ fi
 for f in `find /tmp/  2>/dev/null | grep pycore.*/n[0-9]*$`
 do
 	echo '# HOST:' ${f##*/}
-	vcmd -c $f -- sh -c "nohup $(echo $@) & sleep 1"
+    fn="nohup.$1.$(basename $(mktemp -u -t 'XXXXXX')).log"  
+	vcmd -c $f -- sh -c "nohup $(echo $@) > $fn & sleep 1"
     echo
 done
