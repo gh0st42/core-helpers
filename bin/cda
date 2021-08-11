@@ -5,11 +5,11 @@ if [ "$1" = "-h" ]; then
     exit
 fi
 
-for f in `find /tmp/  2>/dev/null | grep pycore.*/n[0-9]*$`
+for f in `find /tmp/  2>/dev/null | grep pycore.*/n[0-9]*$ | sort`
 do
 	echo '# HOST:' ${f##*/}
     CMD=$(echo $1| cut -d " " -f 1)
     fn="nohup.$CMD.$(basename $(mktemp -u -t 'XXXX')).log"  
-	vcmd -c $f -- sh -c "nohup $(echo $@) > $fn 2>&1 & sleep 1"
+	vcmd -c $f -- sh -c "nohup $(echo $@) > $fn 2>&1 & sleep 0.1"
     echo
 done

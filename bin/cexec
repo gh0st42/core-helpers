@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$1" = "-h" ]; then
+    echo "usage: $0 <node_name> '<commands>'"
+    echo "execute on core node. Lucky session guess (/tmp/pycore.*/) .."
+    echo "don't forget to put commands in single quotes!"
+    exit
+fi
+
+vcmd -c /tmp/pycore.*/$1 -- bash -c "$(echo $2)"
+

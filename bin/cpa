@@ -16,7 +16,7 @@ ctrl_c() {
 }
 trap ctrl_c INT
 
-for f in `find /tmp/pycore.*/ -type s -mindepth 1 -maxdepth 1  2>/dev/null`
+for f in `find /tmp/pycore.*/ -type s -mindepth 1 -maxdepth 1  2>/dev/null | sort`
 do
 	echo '# HOST:' ${f##*/}
 	vcmd -c $f -- bash -ci "$(echo $@)" &
