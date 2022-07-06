@@ -2,6 +2,7 @@
 Helper scripts for core network emulator
 
 * `cbash <nodename>` - open bash
+* `cexec <node_name> '<commands>'`- execute a command on a specific node
 * `ccc` - core crash checker, greps for any FATALs
 * `cda <cmd>` - core daemonize all
 * `cea <cmd>` - core execute all
